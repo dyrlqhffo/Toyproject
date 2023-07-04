@@ -95,7 +95,7 @@ https://templatemo.com/tm-583-festava-live
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_5">Pricing</a>
+                            <a href="${pageContext.request.contextPath}/QA.do">Q&A</a>
                         </li>
 						<c:if test="${member != null}">
                         <li class="nav-item">
