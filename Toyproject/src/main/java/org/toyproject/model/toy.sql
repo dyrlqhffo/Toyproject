@@ -46,3 +46,5 @@ SELECT B.BOARD_NO, M.ID, B.TITLE, B.CONTENT, TO_CHAR(B.REG_DATE, 'YYYY.MM.DD HH2
 AS REG_DATE, TO_CHAR(B.EDIT_DATE, 'YY.MM.DD HH24:MI')AS EDIT_DATE, B.HITS, B.BOARD_TYPE
 FROM BOARDBOARD B INNER JOIN MEMBERMEMBER M ON B.ID = M.ID ORDER BY B.BOARD_NO DESC;
 
+select board_no, id, title, content, to_char(reg_date, 'yy.mm.dd')as reg_date, hits, board_type from boardboard where board_no=1;
+

@@ -64,6 +64,51 @@ public class BoardDAO {
 		
 		return list;
 	}
+	public Board findBoardByNo(long no) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Board board = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "select board_no, id, title, content, to_char(reg_date, 'yy.mm.dd')as reg_date, hits, board_type from boardboard where board_no=?";
+			ps = con.prepareStatement(sql);
+			ps.setLong(1, no);
+			rs = ps.executeQuery();
+		
+			if(rs.next()) {
+				board = new Board();
+				board.setBoardNo(no);
+				Member member = new Member();
+				member.setId(rs.getString("id"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setRegDate(rs.getString("reg_date"));
+				board.setHits(rs.getLong("hits"));
+				board.setBoardType(rs.getString("board_type"));
+				board.setMember(member);
+			}
+		}finally {
+			closeAll(rs, ps, con);
+		}
+		return board;
+	}
+	public void deleteBoard(long no) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from boardboard where board_no=?";
+			ps = con.prepareStatement(sql);
+			ps.setLong(1, no);
+			int num =ps.executeUpdate();
+			
+		}finally {
+			closeAll(ps, con);
+		}
+	}
 	
 	
 

@@ -45,7 +45,7 @@
 					<c:forEach items="${list}" var="list">
 						<tr>
 							<td>${list.boardNo}</td>
-							<td><a href="${pageContext.request.contextPath}/ReadQA.do">${list.title}</td>
+							<td><a href="${pageContext.request.contextPath}/ReadQA.do?no=${list.boardNo}">${list.title}</a></td>
 							<td>${list.member.id}</td>
 							<td>${list.hits}</td>
 							<td>${list.regDate}</td>
